@@ -3,6 +3,7 @@ name: Maven Java Semantic Release
 on:
   push:
     branches: [main, dev]
+  workflow_dispatch:
 
 jobs:
   release:
@@ -12,13 +13,16 @@ jobs:
     steps:
     - name: Checkout repository
       uses: actions/checkout@v4
+
     - name: Set up JDK
       uses: actions/setup-java@v4
       with: 
         java-version: '11' ##modificar por una variable de entorno u otra configuracion
         distribution: 'temurin'  
+
     - name: Build with Maven
       run: mvn clean install --batch-mode
+      
     - name: Semantic Release Custom Action
       uses: ./.github/actions/semantic-release ## deberia ir al repo destino 'org/semantic-release-action@v1'
       with:

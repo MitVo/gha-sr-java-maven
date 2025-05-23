@@ -1,0 +1,31 @@
+name: 'Custom Semantic Release for Java'
+description: 'A customized GitHub Action to run semantic-release for Java projects'
+author: 'Your Name or Organization'
+inputs:
+  github_token:
+    description: 'GitHub token for authentication (required)'
+    required: true
+  release_branch:
+    description: 'Branch to perform the release from'
+    required: false
+    default: 'main'
+  maven_settings_path:
+    description: 'Path to Maven settings.xml (if needed)'
+    required: false
+runs:
+  using: 'composite'
+  steps:
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '20'
+    - name: Install semantic-release and plugins
+      run: |
+        npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec
+
+    - name: Run semantic-release
+      env:
+        GITHUB_TOKEN: ${{ inputs.github_token }}
+        MAVEN_SETTINGS_PATH: ${{ inputs.maven_settings_path }}
+      run: |
+        semantic-release

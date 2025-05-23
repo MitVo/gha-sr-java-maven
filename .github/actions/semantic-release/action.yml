@@ -21,7 +21,8 @@ runs:
         node-version: '20'
     - name: Install semantic-release and plugins
       run: |
-        npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec
+        npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji
+        npx semantic-release --no-ci
       shell: bash
     - name: Run semantic-release
       env:

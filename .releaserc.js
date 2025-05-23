@@ -1,3 +1,6 @@
+const template = readFileAsync(path.join(TEMPLATE_DIR,'.github/actions/semantic-release/handlebar-templates'))
+const commitTemplate = readFileAsync(path.join(TEMPLATE_DIR,'.github/actions/semantic-release/handlebar-templates'))
+
 module.exports = {
 
   branches: [
@@ -21,6 +24,10 @@ module.exports = {
           ]
         },
         releaseNotes: {
+          template,
+          partials: {
+            commitTemplate
+          },
           helpers: {
             formatDate: function(date){
               return dateFormat(date, 'yyy-mm-dd HH:MM:ss');

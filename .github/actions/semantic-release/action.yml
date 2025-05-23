@@ -22,10 +22,11 @@ runs:
     - name: Install semantic-release and plugins
       run: |
         npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec
-
+      shell: bash
     - name: Run semantic-release
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
         MAVEN_SETTINGS_PATH: ${{ inputs.maven_settings_path }}
       run: |
         semantic-release
+      shell: bash  

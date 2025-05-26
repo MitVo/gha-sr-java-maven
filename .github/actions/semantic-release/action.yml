@@ -21,8 +21,10 @@ runs:
         node-version: '20'
     - name: Install semantic-release and plugins
       run: |
+        mkdir -p ${{ github.action_path }}/sm-repo
         echo "Copying semantic-release configuration files"
-        cp ${{ github.action_path }}/.releaserc.js ${{ github.action_path }}/.prerelease-releaserc.js
+        cp ${{ github.action_path }}/.releaserc.js ${{ github.action_path }}/sm-repo/.releaserc.js 
+        cp ${{ github.action_path }}/.prerelease-releaserc.js ${{ github.action_path }}/sm-repo/.prerelease-releaserc.js
         echo "Copying package.json"
         cp ${{ github.action_path }}/package.json
         echo "Copying template files"

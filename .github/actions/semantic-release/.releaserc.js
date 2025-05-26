@@ -69,21 +69,15 @@ module.exports = {
       }
     ],
     [
-      "@semantic-release/git",
+      "@semantic-release/github",
       {
         assets: [
           "**/pom.xml",
-          "docs/CHANGELOG.md"
+          "../../../docs/CHANGELOG.md"
         ],
         message: [
           ':bookmark: ${nextRelease.version} [skip ci]'
         ].join('')
-      }
-    ],
-    [
-      "@semantic-release/npm",
-      {
-        "npmPublish": false
       }
     ]
   ],

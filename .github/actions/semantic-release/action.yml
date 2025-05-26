@@ -28,5 +28,5 @@ runs:
         GITHUB_TOKEN: ${{ inputs.github_token }}
         MAVEN_SETTINGS_PATH: ${{ inputs.maven_settings_path }}
       run: |
-        semantic-release --no-ci --extends ./release/release.config.js
+        semantic-release --no-ci
       shell: bash  

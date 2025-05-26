@@ -31,6 +31,8 @@ runs:
         cp ${{ github.action_path }}/templates ${{ github.action_path }}/sm-repo/templates -r
         echo "Current directory: ${{ github.action_path }}/sm-repo"
         cd ${{ github.action_path }}/sm-repo
+        echo "Check files in the current directory"
+        ls -la
         echo "Installing semantic-release and plugins"
         npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji 
       shell: bash

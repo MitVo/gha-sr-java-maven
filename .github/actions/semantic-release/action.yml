@@ -22,7 +22,6 @@ runs:
     - name: Install semantic-release and plugins
       run: |
         echo "Copying semantic-release configuration files"
-        mkdir -p ${{ github.action_path }}/.releaserc.js
         cp ${{ github.action_path }}/.releaserc.js ${{ github.action_path }}/.prerelease-releaserc.js
         echo "Copying package.json"
         cp ${{ github.action_path }}/package.json

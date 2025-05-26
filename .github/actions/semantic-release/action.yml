@@ -21,12 +21,12 @@ runs:
         node-version: '20'
     - name: Install semantic-release and plugins
       run: |
-        npm install -g semantic-release @semantic-release/changelog @semantic-release/github @semantic-release/exec semantic-release-gitmoji 
+        npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji 
       shell: bash
     - name: Run semantic-release
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
         MAVEN_SETTINGS_PATH: ${{ inputs.maven_settings_path }}
       run: |
-        semantic-release
+        npx semantic-release --no-ci
       shell: bash  

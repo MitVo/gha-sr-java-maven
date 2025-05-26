@@ -79,6 +79,12 @@ module.exports = {
           ':bookmark: ${nextRelease.version} [skip ci]'
         ].join('')
       }
+    ],
+    [
+      "@semantic-release/npm",
+      {
+        "npmPublish": false
+      }
     ]
   ],
   tagFormat: '${version}'

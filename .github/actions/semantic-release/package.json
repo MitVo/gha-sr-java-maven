@@ -1,0 +1,19 @@
+{
+  "name": "semantic-release",
+  "version": "1.0.0",
+  "description": "",
+  "scripts": {},
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/exec": "^7.1.0",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "semantic-release": "^24.2.5"
+  },
+  "release": {
+  "extends": "./.releaserc.js"
+  }
+}

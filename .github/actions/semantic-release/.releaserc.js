@@ -3,8 +3,8 @@ const dateFormat = require('dateformat')
 const path = require('path')
 const TEMPLATE_DIR = path.join(__dirname, 'handlebar-templates')
 const readFileAsync = promisify(require('fs').readFile)
-const template = readFileAsync(path.join(TEMPLATE_DIR,'.github/actions/semantic-release/handlebar-templates'))
-const commitTemplate = readFileAsync(path.join(TEMPLATE_DIR,'.github/actions/semantic-release/handlebar-templates'))
+const template = readFileAsync(path.join(TEMPLATE_DIR, '/default-template.hbs'))
+const commitTemplate = readFileAsync(path.join(TEMPLATE_DIR,'/commit-template.hbs'))
 module.exports = {
 
   branches: [

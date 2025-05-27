@@ -1,3 +1,10 @@
+const { promisify } = require('util')
+const dateFormat = require('dateformat')
+const path = require('path')
+const TEMPLATE_DIR = path.join(__dirname, 'templates')
+const readFileAsync = promisify(require('fs').readFile)
+const template = readFileAsync(path.join(TEMPLATE_DIR, '/default-template.hbs'))
+const commitTemplate = readFileAsync(path.join(TEMPLATE_DIR,'/commit-template.hbs'))
 module.exports = {
 
   branches: [
@@ -24,6 +31,10 @@ module.exports = {
           ]
         },
         releaseNotes: {
+          template,
+          partials: {
+            commitTemplate
+          },
           helpers: {
             formatDate: function(date){
               return dateFormat(date, 'yyy-mm-dd HH:MM:ss');
@@ -32,6 +43,7 @@ module.exports = {
               return string.trim().split('\n');
             },
             formatDateCol: function(date) {
+              if(!date) date = new Date();
               return date.toLocaleString('en-US', { 
                 timeZone: 'America/Bogota', 
                 year: 'numeric', 

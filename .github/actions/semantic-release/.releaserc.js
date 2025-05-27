@@ -1,10 +1,10 @@
 const { promisify } = require('util')
 const dateFormat = require('dateformat')
+const path = require('path')
+const TEMPLATE_DIR = path.join(__dirname, 'templates')
 const readFileAsync = promisify(require('fs').readFile)
-const template = readFileAsync(path.join(TEMPLATE_DIR,'.github/actions/semantic-release/handlebar-templates'))
-const commitTemplate = readFileAsync(path.join(TEMPLATE_DIR,'.github/actions/semantic-release/handlebar-templates'))
-
-
+const template = readFileAsync(path.join(TEMPLATE_DIR, '/default-template.hbs'))
+const commitTemplate = readFileAsync(path.join(TEMPLATE_DIR,'/commit-template.hbs'))
 module.exports = {
 
   branches: [
@@ -40,16 +40,8 @@ module.exports = {
               return string.trim().split('\n');
             },
             formatDateCol: function(date) {
-              return date.toLocaleString('en-US', { 
-                timeZone: 'America/Bogota', 
-                year: 'numeric', 
-                month: '2-digit', 
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-              }).replace(',','');
+              if(!date) date = new Date();
+              return date.toLocaleString('en-US', { timeZone: 'America/Bogota', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).replace(',','');
             }
           }
         }
@@ -58,7 +50,7 @@ module.exports = {
     [
       "@semantic-release/exec",
       {
-        "prepareCmd": "mvn version:set -DnewVersion=\"${nextRelease.version}\" && mvn clean install",
+        "prepareCmd": "mvn versions:set -DnewVersion=\"${nextRelease.version}\" && mvn clean install",
         "successCmd": 'echo "Release ${nextRelease.version} published successfully"'
       }
     ],

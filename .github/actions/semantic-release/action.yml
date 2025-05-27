@@ -21,25 +21,25 @@ runs:
         node-version: '20'
     - name: Install semantic-release and plugins
       run: |
-        mkdir -p ${{ github.action_path }}/sm-repo
         echo "Copying semantic-release configuration files"
-        cp ${{ github.action_path }}/.releaserc.js ${{ github.action_path }}/sm-repo/.releaserc.js 
-        cp ${{ github.action_path }}/.prerelease-releaserc.js ${{ github.action_path }}/sm-repo/.prerelease-releaserc.js
+        cp ${{ github.action_path }}/.releaserc.js ${{ github.workspace }}/.releaserc.js 
+        cp ${{ github.action_path }}/.prerelease-releaserc.js ${{ github.workspace }}/.prerelease-releaserc.js
         echo "Copying package.json"
-        cp ${{ github.action_path }}/package.json ${{ github.action_path }}/sm-repo/package.json
+        cp ${{ github.action_path }}/package.json ${{ github.workspace }}/package.json
         echo "Copying template files"
-        cp ${{ github.action_path }}/templates ${{ github.action_path }}/sm-repo/templates -r
-        echo "Current directory: ${{ github.action_path }}/sm-repo"
-        cd ${{ github.action_path }}/sm-repo
+        cp ${{ github.action_path }}/templates ${{ github.workspace }}/templates -r
+        echo "Current directory: ${{ github.workspace }}"
+        cd ${{ github.workspace }}
         echo "Check files in the current directory"
         ls -la
         echo "Installing semantic-release and plugins"
-        npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji 
+        npm install semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji 
       shell: bash
     - name: Run semantic-release
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
         MAVEN_SETTINGS_PATH: ${{ inputs.maven_settings_path }}
       run: |
-        semantic-release --no-ci
+        cd ${{ github.workspace }}
+        npx semantic-release --no-ci
       shell: bash  

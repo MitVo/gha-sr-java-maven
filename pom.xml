@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.demo</groupId>
     <artifactId>demo-semantic-release-java</artifactId>
-    <version>1.2.3</version>
+    <version>1.2.4</version>
 
     <name>demo-semantic-release-java</name>
     <description>Demo project for semantic release with Java</description>

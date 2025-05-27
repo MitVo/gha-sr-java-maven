@@ -1,5 +1,10 @@
 # Gitmoji Changelog  🎈
 
+# [v1.2.4](https://github.com/MitVo/gha-sr-java-maven/compare/1.2.3...1.2.4) (2025-05-27)
+
+## 🐛 Bug Fixes
+-  added id on step ([`46076d3`](https://github.com/MitVo/gha-sr-java-maven/commits/46076d3)  mitzyvalenciaordonez &#x1F4C5; 05/27/2025 12:09:35)
+
 # [v1.2.3](https://github.com/MitVo/gha-sr-java-maven/compare/1.2.2...1.2.3) (2025-05-27)
 
 ## 🐛 Bug Fixes

@@ -1,10 +1,9 @@
 const { promisify } = require('util')
 const dateFormat = require('dateformat')
+const path = require('path')
 const readFileAsync = promisify(require('fs').readFile)
 const template = readFileAsync(path.join(TEMPLATE_DIR,'.github/actions/semantic-release/handlebar-templates'))
 const commitTemplate = readFileAsync(path.join(TEMPLATE_DIR,'.github/actions/semantic-release/handlebar-templates'))
-
-
 module.exports = {
 
   branches: [

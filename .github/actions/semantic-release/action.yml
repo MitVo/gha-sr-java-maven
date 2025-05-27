@@ -12,6 +12,9 @@ inputs:
   maven_settings_path:
     description: 'Path to Maven settings.xml (if needed)'
     required: false
+outputs:
+  release_version:
+    description: 'The version of the release created by semantic-release'  
 runs:
   using: 'composite'
   steps:
@@ -42,4 +45,6 @@ runs:
       run: |
         cd ${{ github.workspace }}
         npx semantic-release --no-ci
+        latest_tag=$(git describe --tags --abbrev=0)
+        echo "release_version=${latest_tag}" >> $GITHUB_OUTPUT
       shell: bash  

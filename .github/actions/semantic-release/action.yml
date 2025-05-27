@@ -34,7 +34,7 @@ runs:
         echo "Check files in the current directory"
         ls -la
         echo "Installing semantic-release and plugins"
-        npm ci @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji 
+        npm install @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji 
       shell: bash
     - name: Run semantic-release
       env:

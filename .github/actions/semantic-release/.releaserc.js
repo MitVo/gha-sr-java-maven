@@ -40,16 +40,7 @@ module.exports = {
               return string.trim().split('\n');
             },
             formatDateCol: function(date) {
-              return date.toLocaleString('en-US', { 
-                timeZone: 'America/Bogota', 
-                year: 'numeric', 
-                month: '2-digit', 
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-              }).replace(',','');
+              return date.toLocaleString('en-US', { timeZone: 'America/Bogota', year: 'numeric', month: '2-digit', day: '2-digit', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }).replace(',','');
             }
           }
         }

@@ -39,6 +39,7 @@ runs:
         npm install semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji 
       shell: bash
     - name: Run semantic-release
+      id: semantic_release
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
         MAVEN_SETTINGS_PATH: ${{ inputs.maven_settings_path }}

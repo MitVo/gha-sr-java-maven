@@ -14,8 +14,7 @@ inputs:
     required: false
 outputs:
   release_version:
-    description: 'The version of the release created by semantic-release'
-    required: true    
+    description: 'The version of the release created by semantic-release'  
 runs:
   using: 'composite'
   steps:

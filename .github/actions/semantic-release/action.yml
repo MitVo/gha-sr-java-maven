@@ -34,12 +34,13 @@ runs:
         echo "Check files in the current directory"
         ls -la
         echo "Installing semantic-release and plugins"
-        npm install -g semantic-release @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji 
+        npm ci @semantic-release/changelog @semantic-release/git @semantic-release/exec semantic-release-gitmoji 
       shell: bash
     - name: Run semantic-release
       env:
         GITHUB_TOKEN: ${{ inputs.github_token }}
         MAVEN_SETTINGS_PATH: ${{ inputs.maven_settings_path }}
       run: |
-        semantic-release --no-ci
+        cd ${{ github.action_path }}/sm-repo
+        npx semantic-release --no-ci
       shell: bash  
